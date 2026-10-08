@@ -1,0 +1,19 @@
+// generated from rosidl_adapter/resource/srv.idl.em
+// with input from rysen_apexhand_msgs/srv/GetVersionInfo.srv
+// generated code does not contain a copyright notice
+
+
+module rysen_apexhand_msgs {
+  module srv {
+    struct GetVersionInfo_Request {
+      string ip;
+    };
+    struct GetVersionInfo_Response {
+      string sdk_version;
+
+      string hand_firmware_version;
+
+      string touch_sensor_version;
+    };
+  };
+};

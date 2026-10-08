@@ -1,0 +1,202 @@
+{
+  "schema_version": 1,
+  "sdk_version": "1.5.2",
+  "source_directory": "/home/boen/hand/data_glove_teleop/rysen_sdk",
+  "git_revision": null,
+  "git_revision_note": "未从本地源码导出确认 Git 提交；版本来自原始 VERSION 文件。",
+  "architecture": "x86_64",
+  "files": [
+    {
+      "path": "src/rysen_apexhand/CMakeLists.txt",
+      "source": "/home/boen/hand/data_glove_teleop/rysen_sdk/ros2/rysen_apexhand/CMakeLists.txt",
+      "source_sha256": "db638d383792557527ef7a2ede21bfdb404e337d167fd813cb563b1531225b16",
+      "sha256": "f82892599b9272aa54489e0082530cb0faca610162a6c097444d4a9605eafcd6",
+      "source_symlink_target": null
+    },
+    {
+      "path": "src/rysen_apexhand/LICENSE",
+      "source": "/home/boen/hand/data_glove_teleop/rysen_sdk/LICENSE",
+      "source_sha256": "6b2871cfb6892208ca8b59dfa67116e99795adafe87dedb2be784ee088eb9332",
+      "sha256": "6b2871cfb6892208ca8b59dfa67116e99795adafe87dedb2be784ee088eb9332",
+      "source_symlink_target": null
+    },
+    {
+      "path": "src/rysen_apexhand/include/rysen_apexhand/rysen_apexhand_node.hpp",
+      "source": "/home/boen/hand/data_glove_teleop/rysen_sdk/ros2/rysen_apexhand/include/rysen_apexhand/rysen_apexhand_node.hpp",
+      "source_sha256": "0ebcadba3fc3eb052d09beb94316300139fe48c9dbdfa7a65764e96f3658173f",
+      "sha256": "0ebcadba3fc3eb052d09beb94316300139fe48c9dbdfa7a65764e96f3658173f",
+      "source_symlink_target": null
+    },
+    {
+      "path": "src/rysen_apexhand/launch/rysen_apexhand.launch.py",
+      "source": "/home/boen/hand/data_glove_teleop/rysen_sdk/ros2/rysen_apexhand/launch/rysen_apexhand.launch.py",
+      "source_sha256": "39e5ffd1c4cd81fdb3b2a9661f6d827643ba010b146e4f408b0504f7b86a09c7",
+      "sha256": "c26a8fedbba40ab66b56330de0d28ba582960b143f9588eca2dd73519921ad8a",
+      "source_symlink_target": null
+    },
+    {
+      "path": "src/rysen_apexhand/launch/two_apex_hands.launch.py",
+      "source": "/home/boen/hand/data_glove_teleop/rysen_sdk/ros2/rysen_apexhand/launch/two_apex_hands.launch.py",
+      "source_sha256": "30462c20e065d3a99ca060d6821ca06ec7d3a266ecf6d8ca96a8f6474b9aba1c",
+      "sha256": "bd59fbcf57450c60e72d74fb4f782fc8794bb6146a981ad8e1b0d2c0ebe8d48c",
+      "source_symlink_target": null
+    },
+    {
+      "path": "src/rysen_apexhand/package.xml",
+      "source": "/home/boen/hand/data_glove_teleop/rysen_sdk/ros2/rysen_apexhand/package.xml",
+      "source_sha256": "91f42e9b6138e11aeca4be4a284dbd7b68f356a5ef67e7f2f21e5d19ab7a6afe",
+      "sha256": "715a160461b74747c632c84a8850ba8df54189fa7a8ffce95f6739e11bf718ca",
+      "source_symlink_target": null
+    },
+    {
+      "path": "src/rysen_apexhand/src/rysen_apexhand_main.cpp",
+      "source": "/home/boen/hand/data_glove_teleop/rysen_sdk/ros2/rysen_apexhand/src/rysen_apexhand_main.cpp",
+      "source_sha256": "187c7caac65d4f621e18f815e8e99549f5b5ad97927454669430e5b69c427c96",
+      "sha256": "2bc1a4b628c076c6c0faa7b1d7017caff538bb71d8dc4adddc52f86739d75bae",
+      "source_symlink_target": null
+    },
+    {
+      "path": "src/rysen_apexhand/src/rysen_apexhand_node.cpp",
+      "source": "/home/boen/hand/data_glove_teleop/rysen_sdk/ros2/rysen_apexhand/src/rysen_apexhand_node.cpp",
+      "source_sha256": "62fc5346ef1b2fc77a376c83ac3f723ca97edbf57a7fb245d58b92c347f4d3a4",
+      "sha256": "4e264523296ddd071492a768d9dde29a77cb6d60571ce0491e66e7909b9cd2f5",
+      "source_symlink_target": null
+    },
+    {
+      "path": "vendor/apex-sdk/VERSION",
+      "source": "/home/boen/hand/data_glove_teleop/rysen_sdk/VERSION",
+      "source_sha256": "ded1b601e81d31ca1f65c4f3ccf2ebd7992b6390e37bc2a86f3837282f1e00cf",
+      "sha256": "ded1b601e81d31ca1f65c4f3ccf2ebd7992b6390e37bc2a86f3837282f1e00cf",
+      "source_symlink_target": null
+    },
+    {
+      "path": "vendor/apex-sdk/include/rysen_apexhand_data.hpp",
+      "source": "/home/boen/hand/data_glove_teleop/rysen_sdk/rysen_sdk/include/rysen_apexhand_data.hpp",
+      "source_sha256": "b444b4f420ea59267961126faabd2afd4221c80afcbad6ad66c6619648785f36",
+      "sha256": "b444b4f420ea59267961126faabd2afd4221c80afcbad6ad66c6619648785f36",
+      "source_symlink_target": null
+    },
+    {
+      "path": "vendor/apex-sdk/include/rysen_apexhand_sdk.hpp",
+      "source": "/home/boen/hand/data_glove_teleop/rysen_sdk/rysen_sdk/include/rysen_apexhand_sdk.hpp",
+      "source_sha256": "d428744a30a4e3f4a1a4a2dbb81f51f1b1e2e3750dbdb8aa2bc8db39103fb0b6",
+      "sha256": "d428744a30a4e3f4a1a4a2dbb81f51f1b1e2e3750dbdb8aa2bc8db39103fb0b6",
+      "source_symlink_target": null
+    },
+    {
+      "path": "vendor/apex-sdk/lib/librysen_sdk.so",
+      "source": "/home/boen/hand/data_glove_teleop/rysen_sdk/rysen_sdk/lib/x86_64/librysen_sdk.so",
+      "source_sha256": "26f1cf30d6658b80cfb9bf10c2af6dbc25dbb73b485114d546909f56ec02fcca",
+      "sha256": "26f1cf30d6658b80cfb9bf10c2af6dbc25dbb73b485114d546909f56ec02fcca",
+      "source_symlink_target": "librysen_sdk.so.1"
+    },
+    {
+      "path": "vendor/apex-sdk/lib/librysen_sdk.so.1",
+      "source": "/home/boen/hand/data_glove_teleop/rysen_sdk/rysen_sdk/lib/x86_64/librysen_sdk.so.1",
+      "source_sha256": "26f1cf30d6658b80cfb9bf10c2af6dbc25dbb73b485114d546909f56ec02fcca",
+      "sha256": "26f1cf30d6658b80cfb9bf10c2af6dbc25dbb73b485114d546909f56ec02fcca",
+      "source_symlink_target": "librysen_sdk.so.1.5.2"
+    },
+    {
+      "path": "vendor/apex-sdk/lib/librysen_sdk.so.1.5.2",
+      "source": "/home/boen/hand/data_glove_teleop/rysen_sdk/rysen_sdk/lib/x86_64/librysen_sdk.so.1.5.2",
+      "source_sha256": "26f1cf30d6658b80cfb9bf10c2af6dbc25dbb73b485114d546909f56ec02fcca",
+      "sha256": "26f1cf30d6658b80cfb9bf10c2af6dbc25dbb73b485114d546909f56ec02fcca",
+      "source_symlink_target": null
+    },
+    {
+      "path": "vendor/apex-sdk/lib/liburdfdom_model.so.3.0",
+      "source": "/home/boen/hand/data_glove_teleop/.rysen-sdk-env/runtime/usr/lib/x86_64-linux-gnu/liburdfdom_model.so.3.0",
+      "source_sha256": "1fd0ee422a5931acc2279c7ffcbc01094398078cbece79c437246222bee68778",
+      "sha256": "1fd0ee422a5931acc2279c7ffcbc01094398078cbece79c437246222bee68778",
+      "source_symlink_target": null
+    },
+    {
+      "path": "vendor/apex-sdk/licenses/LICENSE",
+      "source": "/home/boen/hand/data_glove_teleop/rysen_sdk/LICENSE",
+      "source_sha256": "6b2871cfb6892208ca8b59dfa67116e99795adafe87dedb2be784ee088eb9332",
+      "sha256": "6b2871cfb6892208ca8b59dfa67116e99795adafe87dedb2be784ee088eb9332",
+      "source_symlink_target": null
+    },
+    {
+      "path": "vendor/apex-sdk/licenses/liburdfdom-model3.0.copyright",
+      "source": "/home/boen/hand/data_glove_teleop/.rysen-sdk-env/runtime/usr/share/doc/liburdfdom-model3.0/copyright",
+      "source_sha256": "42f6e89625e6c6f5080d3f3d376df2e360207db9f4e182a3521939545fb665b3",
+      "sha256": "42f6e89625e6c6f5080d3f3d376df2e360207db9f4e182a3521939545fb665b3",
+      "source_symlink_target": null
+    },
+    {
+      "path": "vendor/apex-sdk/urdf/apex_hand_left.urdf",
+      "source": "/home/boen/hand/data_glove_teleop/rysen_sdk/urdf/apex_hand_left.urdf",
+      "source_sha256": "4b42448c8c64ad512b96af18098ecb4453e34af3fa51587f4a0f34820fe6cb3c",
+      "sha256": "4b42448c8c64ad512b96af18098ecb4453e34af3fa51587f4a0f34820fe6cb3c",
+      "source_symlink_target": null
+    },
+    {
+      "path": "vendor/apex-sdk/urdf/apex_hand_right.urdf",
+      "source": "/home/boen/hand/data_glove_teleop/rysen_sdk/urdf/apex_hand_right.urdf",
+      "source_sha256": "23a6fc8d27b4b2503ef233785d6348d7119419292e7ad633df7965c82734f54c",
+      "sha256": "23a6fc8d27b4b2503ef233785d6348d7119419292e7ad633df7965c82734f54c",
+      "source_symlink_target": null
+    }
+  ],
+  "runtime_dependencies": {
+    "librysen_sdk.so.1": {
+      "path": "vendor/apex-sdk/lib/librysen_sdk.so.1",
+      "version": "1.5.2",
+      "license": "vendor/apex-sdk/licenses/LICENSE",
+      "needed": [
+        "libspdlog.so.1",
+        "libfmt.so.8",
+        "liburdfdom_model.so.3.0",
+        "libtinyxml2.so.9",
+        "libstdc++.so.6",
+        "libm.so.6",
+        "libgcc_s.so.1",
+        "libc.so.6",
+        "ld-linux-x86-64.so.2"
+      ]
+    },
+    "liburdfdom_model.so.3.0": {
+      "path": "vendor/apex-sdk/lib/liburdfdom_model.so.3.0",
+      "version": "3.0.1-1",
+      "version_source": "/home/boen/hand/data_glove_teleop/.rysen-sdk-env/runtime/usr/share/doc/liburdfdom-model3.0/changelog.Debian.gz",
+      "license": "vendor/apex-sdk/licenses/liburdfdom-model3.0.copyright",
+      "needed": [
+        "libconsole_bridge.so.1.0",
+        "libtinyxml.so.2.6.2",
+        "libstdc++.so.6",
+        "libm.so.6",
+        "libgcc_s.so.1",
+        "libc.so.6"
+      ]
+    },
+    "existing_project_libraries": {
+      "libspdlog.so.1": "vendor/system/lib/libspdlog.so.1",
+      "libfmt.so.8": "vendor/system/lib/libfmt.so.8",
+      "libtinyxml2.so.9": "vendor/system/lib/libtinyxml2.so.9",
+      "libconsole_bridge.so.1.0": "vendor/system/lib/libconsole_bridge.so.1.0",
+      "libtinyxml.so.2.6.2": "vendor/system/lib/libtinyxml.so.2.6.2",
+      "libstdc++.so.6": "vendor/system/lib/libstdc++.so.6",
+      "libgcc_s.so.1": "vendor/system/lib/libgcc_s.so.1"
+    },
+    "existing_project_dependency_provenance": "vendor/system/manifest.json",
+    "existing_project_dependency_licenses": "vendor/system/licenses",
+    "host_glibc": [
+      "libm.so.6",
+      "libc.so.6",
+      "ld-linux-x86-64.so.2"
+    ],
+    "inspection": "通过 readelf -d 静态读取 DT_NEEDED；未加载或执行 SDK。"
+  },
+  "local_changes": [
+    "CMake 使用本项目 vendor/apex-sdk、vendor/ros 和 vendor/install，不复制或构建第二套消息包。",
+    "默认不连接默认手或 startup_hands；两处自动使能路径显式检查 auto_enable_on_connect；手动 connect 服务保持只连接。",
+    "单手及双手 launch 均默认关闭自动连接和自动使能，移除 Foxglove 可选依赖。",
+    "不导入或构建会驱动运动的 example node 与未使用的 thirdparty。",
+    "FastRTPS 导入目标中宿主机绝对 tinyxml2 链接仅在当前 CMake 配置中重定位，原 vendor 文件不变。",
+    "main 注册 executor 后输出 ApexHand backend ready。",
+    "源动态库链接解引用为普通文件，无外部符号链接。"
+  ],
+  "urdf_note": "左右 URDF 保持原样；原发行目录没有其 ./meshes/*.STL 资源。后端不调用 SetRobotModelFromURDF，连接与状态读取不使用网格；本移植不声称提供 URDF 可视化网格。"
+}

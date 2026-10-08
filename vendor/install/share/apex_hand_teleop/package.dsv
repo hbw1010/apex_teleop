@@ -1,0 +1,12 @@
+source;share/apex_hand_teleop/hook/cmake_prefix_path.ps1
+source;share/apex_hand_teleop/hook/cmake_prefix_path.dsv
+source;share/apex_hand_teleop/hook/cmake_prefix_path.sh
+source;share/apex_hand_teleop/hook/ld_library_path_lib.ps1
+source;share/apex_hand_teleop/hook/ld_library_path_lib.dsv
+source;share/apex_hand_teleop/hook/ld_library_path_lib.sh
+source;share/apex_hand_teleop/hook/pythonpath.ps1
+source;share/apex_hand_teleop/hook/pythonpath.dsv
+source;share/apex_hand_teleop/hook/pythonpath.sh
+source;share/apex_hand_teleop/hook/ament_prefix_path.ps1
+source;share/apex_hand_teleop/hook/ament_prefix_path.dsv
+source;share/apex_hand_teleop/hook/ament_prefix_path.sh

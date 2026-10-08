@@ -1,0 +1,5 @@
+<mujoco>
+  <keyframe>
+    <key name="open hand" qpos="0 0 1.3963 0 0 0 0 0 0 0 0 0 0 0 0 0"/>
+  </keyframe>
+</mujoco>

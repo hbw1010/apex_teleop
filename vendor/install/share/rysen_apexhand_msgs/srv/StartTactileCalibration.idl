@@ -1,0 +1,19 @@
+// generated from rosidl_adapter/resource/srv.idl.em
+// with input from rysen_apexhand_msgs/srv/StartTactileCalibration.srv
+// generated code does not contain a copyright notice
+
+
+module rysen_apexhand_msgs {
+  module srv {
+    struct StartTactileCalibration_Request {
+      @verbatim (language="comment", text=
+        "target hand ip")
+      string ip;
+    };
+    struct StartTactileCalibration_Response {
+      boolean success;
+
+      string message;
+    };
+  };
+};

@@ -1,0 +1,30 @@
+// generated from rosidl_adapter/resource/srv.idl.em
+// with input from rysen_apexhand_msgs/srv/SetMaxFingerTorque.srv
+// generated code does not contain a copyright notice
+
+
+module rysen_apexhand_msgs {
+  module srv {
+    @verbatim (language="comment", text=
+      "Request" "\n"
+      "false: set mode, true: get mode")
+    struct SetMaxFingerTorque_Request {
+      string ip;
+
+      boolean get_only;
+
+      sequence<uint8> finger_ids;
+
+      sequence<double> max_torques;
+    };
+    @verbatim (language="comment", text=
+      "Response")
+    struct SetMaxFingerTorque_Response {
+      boolean success;
+
+      string message;
+
+      sequence<double> max_torques;
+    };
+  };
+};

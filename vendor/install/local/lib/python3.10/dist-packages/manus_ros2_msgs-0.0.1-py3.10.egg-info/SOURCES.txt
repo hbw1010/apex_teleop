@@ -1,0 +1,6 @@
+setup.py
+manus_ros2_msgs/__init__.py
+manus_ros2_msgs.egg-info/PKG-INFO
+manus_ros2_msgs.egg-info/SOURCES.txt
+manus_ros2_msgs.egg-info/dependency_links.txt
+manus_ros2_msgs.egg-info/top_level.txt

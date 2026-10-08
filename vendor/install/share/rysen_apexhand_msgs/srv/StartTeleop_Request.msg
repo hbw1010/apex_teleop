@@ -1,0 +1,18 @@
+# 遥操作启停（同构服务，按设备挂不同服务名）:
+#   IO 外骨骼: /rysen/apexhand/start_io_teleop
+#   MANUS 手套: /rysen/apexhand/start_manus_teleop
+#
+# command 格式: CODE:IP（必须带目标手 IP）
+#   0:<IP>   停止该 IP
+#   5:<IP>   查询该 IP 状态（只读；结果在 response.message）
+#   1:<IP>   左手全功能启动（含对指），绑定到该 IP
+#   2:<IP>   右手全功能启动（含对指），绑定到该 IP
+#   11:<IP>  左手无对指启动，绑定到该 IP
+#   21:<IP>  右手无对指启动，绑定到该 IP
+#
+# 示例: 1:192.168.0.103 / 0:192.168.0.103 / 5:192.168.0.103
+#
+# status(command=5:<IP>) 时 success=true 表示查询成功，不代表遥操作正在运行。
+# response.message 格式:
+#   active=<true|false> forwarding=<true|false> exo_mode=<left|right|both|none>; <中文摘要>
+string command

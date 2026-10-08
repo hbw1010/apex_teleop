@@ -1,0 +1,56 @@
+#!/usr/bin/env bash
+# Prefer a working mink .venv on the host; fall back to system python3 in Docker
+# (image installs mink into site-packages). Override with USE_SYSTEM_PYTHON=1
+# or USE_MINK_VENV=1.
+set -e
+
+script_dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+workspace_root="$(cd -- "$script_dir/../../../.." && pwd)"
+venv_python="$workspace_root/src/teleopration/mink/.venv/bin/python"
+
+_resolve_py() {
+  local py="$1"
+  if [ -x "$py" ]; then
+    echo "$py"
+    return 0
+  fi
+  command -v "$py" 2>/dev/null || return 1
+}
+
+_mink_ok() {
+  local py
+  py="$(_resolve_py "$1")" || return 1
+  "$py" -c "import mink" >/dev/null 2>&1
+}
+
+_in_docker() {
+  [ -f /.dockerenv ] || [ -d /ros2_ws/src/teleopration ]
+}
+
+PY=""
+if [ "${USE_SYSTEM_PYTHON:-0}" = "1" ]; then
+  PY="${PYTHON:-python3}"
+elif [ "${USE_MINK_VENV:-0}" = "1" ]; then
+  if [ ! -x "$venv_python" ]; then
+    echo "mink virtualenv python not found: $venv_python" >&2
+    echo "Create it on the host, or unset USE_MINK_VENV to use system python3." >&2
+    exit 1
+  fi
+  PY="$venv_python"
+elif _in_docker; then
+  # Host-mounted .venv often has editable mink with /home/... paths. Skip it.
+  PY="${PYTHON:-python3}"
+elif _mink_ok "$venv_python"; then
+  PY="$venv_python"
+else
+  PY="${PYTHON:-python3}"
+fi
+
+if ! _mink_ok "$PY"; then
+  echo "mink is not importable with: $PY" >&2
+  echo "Host:  pip install mink  (into src/teleopration/mink/.venv, non-editable)" >&2
+  echo "Docker: rebuild the image (Dockerfile installs mink) or: pip3 install mink" >&2
+  exit 1
+fi
+
+exec "$(_resolve_py "$PY")" -m apex_hand_teleop.manus_apex_retarget_node "$@"

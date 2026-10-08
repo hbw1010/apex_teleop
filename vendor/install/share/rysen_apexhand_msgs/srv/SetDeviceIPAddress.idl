@@ -1,0 +1,26 @@
+// generated from rosidl_adapter/resource/srv.idl.em
+// with input from rysen_apexhand_msgs/srv/SetDeviceIPAddress.srv
+// generated code does not contain a copyright notice
+
+
+module rysen_apexhand_msgs {
+  module srv {
+    @verbatim (language="comment", text=
+      "Modify the hand's on-device (firmware) network IPv4 address over the current connection." "\n"
+      "This is NOT the ROS node parameter `device_ip`." "\n"
+      "ROS node: on success the hand for original_ip is removed from the node; call connect with new_ip." "\n"
+      "" "\n"
+      "original_ip: which connected hand to command (current session / IP, same role as other services)." "\n"
+      "new_ip: IPv4 address written to the device (SDK uses default netmask/gateway).")
+    struct SetDeviceIPAddress_Request {
+      string original_ip;
+
+      string new_ip;
+    };
+    struct SetDeviceIPAddress_Response {
+      boolean success;
+
+      string message;
+    };
+  };
+};

@@ -1,0 +1,60 @@
+// generated from rosidl_adapter/resource/srv.idl.em
+// with input from rysen_apexhand_msgs/srv/MoveJoint.srv
+// generated code does not contain a copyright notice
+
+
+module rysen_apexhand_msgs {
+  module srv {
+    @verbatim (language="comment", text=
+      "Request" "\n"
+      "JointId 与 NAMING_CONVENTION.md / rysen_apexhand_node joint_states 顺序一致 (0-20)")
+    struct MoveJoint_Request {
+      @verbatim (language="comment", text=
+        "JOINT_ID_THUMB_CMC_ABD = 0" "\n"
+        "JOINT_ID_THUMB_CMC_ROT = 1" "\n"
+        "JOINT_ID_THUMB_CMC_FLEX = 2" "\n"
+        "JOINT_ID_THUMB_MCP_FLEX = 3" "\n"
+        "JOINT_ID_THUMB_IP_FLEX = 4" "\n"
+        "JOINT_ID_INDEX_MCP_ABD = 5" "\n"
+        "JOINT_ID_INDEX_MCP_FLEX = 6" "\n"
+        "JOINT_ID_INDEX_PIP_FLEX = 7" "\n"
+        "JOINT_ID_INDEX_DIP_FLEX = 8" "\n"
+        "JOINT_ID_MIDDLE_MCP_ABD = 9" "\n"
+        "JOINT_ID_MIDDLE_MCP_FLEX = 10" "\n"
+        "JOINT_ID_MIDDLE_PIP_FLEX = 11" "\n"
+        "JOINT_ID_MIDDLE_DIP_FLEX = 12" "\n"
+        "JOINT_ID_RING_MCP_ABD = 13" "\n"
+        "JOINT_ID_RING_MCP_FLEX = 14" "\n"
+        "JOINT_ID_RING_PIP_FLEX = 15" "\n"
+        "JOINT_ID_RING_DIP_FLEX = 16" "\n"
+        "JOINT_ID_LITTLE_MCP_ABD = 17" "\n"
+        "JOINT_ID_LITTLE_MCP_FLEX = 18" "\n"
+        "JOINT_ID_LITTLE_PIP_FLEX = 19" "\n"
+        "JOINT_ID_LITTLE_DIP_FLEX = 20")
+      string ip;
+
+      @verbatim (language="comment", text=
+        "Joint IDs (0-20)")
+      sequence<uint8> joint_ids;
+
+      @verbatim (language="comment", text=
+        "Target positions (rad)")
+      sequence<double> positions;
+
+      @verbatim (language="comment", text=
+        "Target velocities (rad/s)")
+      sequence<double> velocities;
+
+      @verbatim (language="comment", text=
+        "Target accelerations (rad/s²)")
+      sequence<double> accelerations;
+    };
+    @verbatim (language="comment", text=
+      "Response")
+    struct MoveJoint_Response {
+      boolean success;
+
+      string message;
+    };
+  };
+};

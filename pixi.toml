@@ -1,0 +1,55 @@
+[workspace]
+name = "apex-teleop"
+version = "0.1.0"
+description = "Rysen MANUS 遥操作原生运行环境（保留上游二进制）"
+channels = ["conda-forge"]
+platforms = [{ platform = "linux-64", glibc = "2.35" }]
+
+[feature.native.dependencies]
+python = "3.10.*"
+pip = "*"
+setuptools = "==79.0.1"
+cmake = ">=3.26,<4"
+ninja = "*"
+gxx_linux-64 = "12.*"
+pkg-config = "*"
+# ROS Humble / SDK 二进制使用的同代开发头文件。
+spdlog = "1.9.2.*"
+fmt = "8.1.1.*"
+
+[feature.native.pypi-dependencies]
+# 与固定镜像中的核心计算依赖保持一致，避免改变重定向行为。
+numpy = "==2.2.6"
+scipy = "==1.15.3"
+mujoco = "==3.12.0"
+mink = "==1.3.0"
+qpsolvers = { version = "==4.13.0", extras = ["daqp"] }
+daqp = "==0.9.1"
+loop-rate-limiters = "==1.2.0"
+typing-extensions = "==4.16.0"
+glfw = "==2.10.2"
+pyopengl = "==3.1.10"
+pyyaml = ">=6,<7"
+argcomplete = ">=1,<4"
+netifaces = "==0.11.0"
+psutil = ">=5,<8"
+catkin-pkg = ">=0.5,<2"
+lark = ">=1,<2"
+empy = "==3.3.4"
+
+[feature.native.activation]
+scripts = ["scripts/activate.sh"]
+
+[feature.native.tasks]
+bootstrap = { cmd = "python scripts/bootstrap.py", description = "首次从固定镜像导入原生二进制，不启动容器" }
+teleop = { cmd = "bash scripts/runtime.sh teleop", description = "启动 MANUS 遥操作管理器" }
+ros2 = { cmd = "bash scripts/runtime.sh ros2", description = "使用原版消息接口运行 ROS 2 命令" }
+control = { cmd = "bash scripts/runtime.sh python scripts/control.py", description = "遥操作及标定服务客户端" }
+smoke = { cmd = "bash scripts/runtime.sh python scripts/smoke.py", description = "检查原版二进制、消息接口与左右手 IK" }
+build-backend = { cmd = "bash scripts/runtime.sh bash scripts/build-backend.sh", description = "编译项目内 ApexHand 驱动" }
+backend = { cmd = "bash scripts/runtime.sh bash scripts/backend.sh", description = "启动 ApexHand 后端，默认不连接、不使能" }
+hand = { cmd = "bash scripts/runtime.sh python scripts/hand.py", description = "显式连接、查询或使能真机" }
+session = { cmd = "bash scripts/runtime.sh python scripts/session.py", description = "一键启动，先回零再遥操作，退出回零失能" }
+
+[environments]
+native = { features = ["native"], no-default-feature = true }

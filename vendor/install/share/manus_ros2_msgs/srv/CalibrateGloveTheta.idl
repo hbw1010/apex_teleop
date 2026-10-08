@@ -1,0 +1,37 @@
+// generated from rosidl_adapter/resource/srv.idl.em
+// with input from manus_ros2_msgs/srv/CalibrateGloveTheta.srv
+// generated code does not contain a copyright notice
+
+#include "geometry_msgs/msg/Point.idl"
+
+module manus_ros2_msgs {
+  module srv {
+    @verbatim (language="comment", text=
+      "Target MANUS glove side: \"left\" or \"right\".")
+    struct CalibrateGloveTheta_Request {
+      string side;
+    };
+    typedef geometry_msgs::msg::Point geometry_msgs__msg__Point;
+    typedef geometry_msgs__msg__Point geometry_msgs__msg__Point__5[5];
+    struct CalibrateGloveTheta_Response {
+      boolean success;
+
+      double theta_rad;
+
+      double theta_deg;
+
+      @verbatim (language="comment", text=
+        "Raw SDK TIP positions before theta correction." "\n"
+        "Order: thumb, index, middle, ring, pinky.")
+      geometry_msgs__msg__Point__5 four_fingers_together_tips;
+
+      double midpoint_y;
+
+      double midpoint_z;
+
+      uint32 sample_count;
+
+      string message;
+    };
+  };
+};

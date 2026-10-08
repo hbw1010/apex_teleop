@@ -1,0 +1,4 @@
+
+string sdk_version
+string hand_firmware_version
+string touch_sensor_version

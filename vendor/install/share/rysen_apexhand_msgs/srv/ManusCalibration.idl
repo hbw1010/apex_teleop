@@ -1,0 +1,37 @@
+// generated from rosidl_adapter/resource/srv.idl.em
+// with input from rysen_apexhand_msgs/srv/ManusCalibration.srv
+// generated code does not contain a copyright notice
+
+#include "geometry_msgs/msg/Point.idl"
+
+module rysen_apexhand_msgs {
+  module srv {
+    @verbatim (language="comment", text=
+      "Target MANUS glove side: \"left\" or \"right\".")
+    struct ManusCalibration_Request {
+      string side;
+    };
+    typedef geometry_msgs::msg::Point geometry_msgs__msg__Point;
+    typedef geometry_msgs__msg__Point geometry_msgs__msg__Point__5[5];
+    struct ManusCalibration_Response {
+      boolean success;
+
+      @verbatim (language="comment", text=
+        "Open-pose result or default restored by clear.")
+      double theta_rad;
+
+      double theta_deg;
+
+      @verbatim (language="comment", text=
+        "Raw SDK TIP positions before theta correction." "\n"
+        "Order: thumb, index, middle, ring, pinky.")
+      geometry_msgs__msg__Point__5 four_fingers_together_tips;
+
+      geometry_msgs__msg__Point__5 fist_tips;
+
+      uint32 sample_count;
+
+      string message;
+    };
+  };
+};

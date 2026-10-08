@@ -1,0 +1,5 @@
+# Request
+# Enable or disable fingers
+string ip
+FingerId[] finger_ids    # List of finger IDs to enable/disable
+bool enable              # true to enable, false to disable

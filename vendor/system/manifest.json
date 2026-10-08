@@ -1,0 +1,53 @@
+{
+  "image": "ghcr.io/rysenrobotics/rysen-retargeting@sha256:573f517aaa249278f1098517f1485e09d50123473274332d498674bdee7c418d",
+  "libraries_sha256": {
+    "libconsole_bridge.so.1.0": "e5c857beaaa32a74078a1192b37fba8e299fee1e893f2091f29ca246018517a7",
+    "libcrypto.so.3": "da84c5153ecbfb9cd3df51e81c868353c718f04a126c7bf579569cc3ee13a982",
+    "libexpat.so.1": "5491355459d82059a2e58134c5bf3a890f6f6e1a6fb209f152c25cde7522def0",
+    "libfmt.so.8": "d463bedd51d449b2346d329fad8080e0900120ad0aeab8bf93e325b6cff4a587",
+    "libgcc_s.so.1": "fc9d43b2f6c20e53b009238f767c5b949d202389e20de9e202ea684b4ba3729a",
+    "libncurses.so.6": "a8c76336f70d0c1411992b3563fb2f5ae818bb4a858177163ecfe7edf05642a3",
+    "liborocos-kdl.so.1.5": "0b042c1cdd7c34bf2ba5ac600ce7353dd47f8e98b5cd881a178a5f3b1d04a745",
+    "libpython3.10.so.1.0": "3784bc8da2a454ffb098e0b3e739d2c5775ab34ebc55a53b28293ea97b3cbdc1",
+    "libspdlog.so.1": "1de96ba8296808433bf3ad601f2410c179a3e422a05ad012b49e4ad364f72bc0",
+    "libsqlite3.so.0": "4afd0a63b217e9ad1716ededa0f90d2dbb0561136e69c363e423e2f501afd0d4",
+    "libssl.so.3": "113df9c73ec231ca44dc4162ef9df5009be40bf2a521be2a43267eb4bf77b31c",
+    "libstdc++.so.6": "ff0825e113603c3866680d5d52216bc6d8eedf3a59f52a0aef67ff01994db128",
+    "libtinfo.so.6": "bcd7edc10f0e3df476c0738280cd60c751c11b5b99fa13ded70f5439cb3a8ce9",
+    "libtinyxml.so.2.6.2": "c353cc0c25904f630d9b0dfcf4a98dc76c29f0b722a9ee84a401d01c9e6f78fc",
+    "libtinyxml2.so.9": "05059e5dd45e4f6bde1c827e20c7b229e659e5d7b523677afaf565db65d9badf",
+    "libudev.so.1": "1f47ab3bd9929605e30935503e339b6f5dcceb71595f0716377be1318962561d",
+    "libusb-1.0.so.0": "919e7ca7633bde351a097843638d1871c497211626e6c355140e898e61d2a84c",
+    "libyaml-cpp.so.0.7": "0ff4f6210a56b6c232c1497514a86424279f2250fe8d25ee26f600b3dab0a2b5",
+    "libz.so.1": "64c206f0146cc58bbddc4f22054436f4ff278f5a554aa3ce6921ddf7e9133370",
+    "libzstd.so.1": "5df4f4df42d76270bb6981fabc7c1fdccd8ad28a23d84d67f73203fb3f537667"
+  },
+  "host_glibc": [
+    "ld-linux-x86-64.so.2",
+    "libc.so.6",
+    "libdl.so.2",
+    "libm.so.6",
+    "libpthread.so.0"
+  ],
+  "copyright_packages": [
+    "libconsole-bridge1.0",
+    "libexpat1",
+    "libfmt8",
+    "libgcc-s1",
+    "libncurses6",
+    "liborocos-kdl1.5",
+    "libpython3.10",
+    "libspdlog1",
+    "libsqlite3-0",
+    "libssl3",
+    "libstdc++6",
+    "libtinfo6",
+    "libtinyxml2-9",
+    "libtinyxml2.6.2v5",
+    "libudev1",
+    "libusb-1.0-0",
+    "libyaml-cpp0.7",
+    "libzstd1",
+    "zlib1g"
+  ]
+}

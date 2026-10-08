@@ -1,0 +1,19 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from rysen_apexhand_msgs/msg/FingerId.msg
+// generated code does not contain a copyright notice
+
+
+module rysen_apexhand_msgs {
+  module msg {
+    @verbatim (language="comment", text=
+      "Finger identifier constants" "\n"
+      "FINGER_ID_THUMB = 0" "\n"
+      "FINGER_ID_INDEX = 1" "\n"
+      "FINGER_ID_MIDDLE = 2" "\n"
+      "FINGER_ID_RING = 3" "\n"
+      "FINGER_ID_LITTLE = 4")
+    struct FingerId {
+      uint8 finger_id;
+    };
+  };
+};

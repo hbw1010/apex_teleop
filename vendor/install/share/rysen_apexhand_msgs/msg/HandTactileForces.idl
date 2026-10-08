@@ -1,0 +1,43 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from rysen_apexhand_msgs/msg/HandTactileForces.msg
+// generated code does not contain a copyright notice
+
+#include "builtin_interfaces/msg/Time.idl"
+#include "rysen_apexhand_msgs/msg/CommonFingerTactile.idl"
+#include "rysen_apexhand_msgs/msg/TactileImage.idl"
+#include "rysen_apexhand_msgs/msg/ThumbFingerTactile.idl"
+
+module rysen_apexhand_msgs {
+  module msg {
+    @verbatim (language="comment", text=
+      "! Hand-level tactile image + tangential forces from HandSensorImage" "\n"
+      "! Mirrors rysen::HandSensorImage (only tactile part)")
+    struct HandTactileForces {
+      builtin_interfaces::msg::Time stamp;
+
+      @verbatim (language="comment", text=
+        "食指 (prox/mid/dist_pad + 切向力，见 NAMING_CONVENTION.md)")
+      rysen_apexhand_msgs::msg::CommonFingerTactile index;
+
+      @verbatim (language="comment", text=
+        "中指")
+      rysen_apexhand_msgs::msg::CommonFingerTactile middle;
+
+      @verbatim (language="comment", text=
+        "无名指")
+      rysen_apexhand_msgs::msg::CommonFingerTactile ring;
+
+      @verbatim (language="comment", text=
+        "小拇指")
+      rysen_apexhand_msgs::msg::CommonFingerTactile little;
+
+      @verbatim (language="comment", text=
+        "大拇指")
+      rysen_apexhand_msgs::msg::ThumbFingerTactile thumb;
+
+      @verbatim (language="comment", text=
+        "手掌中心 palm_center")
+      rysen_apexhand_msgs::msg::TactileImage palm_center;
+    };
+  };
+};

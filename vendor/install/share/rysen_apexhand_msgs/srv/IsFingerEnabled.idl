@@ -1,0 +1,35 @@
+// generated from rosidl_adapter/resource/srv.idl.em
+// with input from rysen_apexhand_msgs/srv/IsFingerEnabled.srv
+// generated code does not contain a copyright notice
+
+
+module rysen_apexhand_msgs {
+  module srv {
+    @verbatim (language="comment", text=
+      "Request")
+    struct IsFingerEnabled_Request {
+      @verbatim (language="comment", text=
+        "目标机械手的 IP")
+      string ip;
+
+      @verbatim (language="comment", text=
+        "手指 ID (0:拇指, 1:食指, 2:中指, 3:无名指, 4:小指)")
+      uint8 finger_id;
+    };
+    @verbatim (language="comment", text=
+      "Response")
+    struct IsFingerEnabled_Response {
+      @verbatim (language="comment", text=
+        "服务调用是否成功（比如 IP 不存在就会返回 false）")
+      boolean success;
+
+      @verbatim (language="comment", text=
+        "错误信息或状态描述")
+      string message;
+
+      @verbatim (language="comment", text=
+        "该手指是否被使能 (true/false)")
+      boolean is_enabled;
+    };
+  };
+};

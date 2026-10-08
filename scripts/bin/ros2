@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+set -euo pipefail
+root="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/../.." && pwd)"
+source "${root}/scripts/activate.sh"
+# 指定解释器，避开原版 /usr/bin/python3 shebang；绝不回调 PATH 中的自己。
+exec "$PYTHON" "${root}/vendor/ros/bin/ros2" "$@"

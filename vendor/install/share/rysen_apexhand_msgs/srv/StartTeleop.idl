@@ -1,0 +1,35 @@
+// generated from rosidl_adapter/resource/srv.idl.em
+// with input from rysen_apexhand_msgs/srv/StartTeleop.srv
+// generated code does not contain a copyright notice
+
+
+module rysen_apexhand_msgs {
+  module srv {
+    @verbatim (language="comment", text=
+      "遥操作启停（同构服务，按设备挂不同服务名）:" "\n"
+      "  IO 外骨骼: /rysen/apexhand/start_io_teleop" "\n"
+      "  MANUS 手套: /rysen/apexhand/start_manus_teleop" "\n"
+      "" "\n"
+      "command 格式: CODE:IP（必须带目标手 IP）" "\n"
+      "  0:<IP>   停止该 IP" "\n"
+      "  5:<IP>   查询该 IP 状态（只读；结果在 response.message）" "\n"
+      "  1:<IP>   左手全功能启动（含对指），绑定到该 IP" "\n"
+      "  2:<IP>   右手全功能启动（含对指），绑定到该 IP" "\n"
+      "  11:<IP>  左手无对指启动，绑定到该 IP" "\n"
+      "  21:<IP>  右手无对指启动，绑定到该 IP" "\n"
+      "" "\n"
+      "示例: 1:192.168.0.103 / 0:192.168.0.103 / 5:192.168.0.103" "\n"
+      "" "\n"
+      "status(command=5:<IP>) 时 success=true 表示查询成功，不代表遥操作正在运行。" "\n"
+      "response.message 格式:" "\n"
+      "  active=<true|false> forwarding=<true|false> exo_mode=<left|right|both|none>; <中文摘要>")
+    struct StartTeleop_Request {
+      string command;
+    };
+    struct StartTeleop_Response {
+      boolean success;
+
+      string message;
+    };
+  };
+};

@@ -1,0 +1,20 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from rysen_apexhand_msgs/msg/TangentialForce.msg
+// generated code does not contain a copyright notice
+
+
+module rysen_apexhand_msgs {
+  module msg {
+    @verbatim (language="comment", text=
+      "Tangential force (direction and magnitude)")
+    struct TangentialForce {
+      @verbatim (language="comment", text=
+        "direction [0, 2*pi]")
+      double theta;
+
+      @verbatim (language="comment", text=
+        "force magnitude")
+      double magnitude;
+    };
+  };
+};

@@ -1,0 +1,27 @@
+# Pixi and colcon generated files
+/.pixi/
+/build/
+/install/
+/log/
+
+# Python caches
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+
+# Local runtime artifacts
+*.log
+MUJOCO_LOG.TXT
+*.bag
+*.db3
+.DS_Store
+/.cache/
+/.env
+/log.txt
+/calibration/*
+/vendor/.bootstrap.lock
+/vendor/.bootstrap-complete.json
+/vendor/.import-*/
+
+# Vendor shared libraries and assets are intentionally NOT ignored.
