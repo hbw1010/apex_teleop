@@ -32,16 +32,45 @@ def parse_args():
             command.add_argument("--no-opposition", action="store_true", help="使用原版无对指启动模式")
     calibration = commands.add_parser("calibration", help="运行时姿态标定；完成后需重新启动遥操作")
     steps = calibration.add_subparsers(dest="step", required=True)
-    for name in ("start", "open", "fist", "clear"):
+    for name in ("run", "start", "open", "fist", "clear"):
         step = steps.add_parser(name)
         step.add_argument("--side", choices=("left", "right"), required=True, help="标定侧别")
         step.add_argument(
-            "--timeout", type=positive_timeout, default=30.0, help="发现及响应总超时秒数，默认 30"
+            "--timeout", type=positive_timeout, default=30.0,
+            help="单步服务发现及响应超时秒数，不含等待按键时间，默认 30"
         )
     return parser.parse_args()
 
 
+def run_calibration(args):
+    if not sys.stdin.isatty():
+        raise ValueError("交互标定需要终端输入；脚本调用请使用 start/open/fist 单步命令。")
+    side = "左手" if args.side == "left" else "右手"
+    print(f"{side}姿态标定：请先确认真实灵巧手已停止并关闭使能。")
+    print("准备姿态时不计时；按 Ctrl+C 可取消，不会自动恢复转发。")
+    stages = (
+        ("start", None),
+        ("open", "四指伸直并拢，拇指自然张开；摆好并保持，按 Enter 采集："),
+        ("fist", "五指自然握拳；摆好并保持，按 Enter 采集："),
+    )
+    for step, prompt in stages:
+        if prompt is not None:
+            input(prompt)
+            print("正在采集，请保持姿态，等待本步返回。")
+        step_args = argparse.Namespace(**vars(args))
+        step_args.step = step
+        result = call_service(step_args)
+        if result != 0:
+            print("本步标定失败，已停止；不会继续下一步或恢复转发。", file=sys.stderr)
+            return result
+    print(f"{side}姿态标定完成。转发仍关闭；准备遥操作时请重新走正常启动入口。")
+    return 0
+
+
 def call_service(args):
+    if args.command == "calibration" and args.step == "run":
+        return run_calibration(args)
+
     from rosidl_runtime_py.convert import message_to_yaml
     from rysen_apexhand_msgs.srv import ManusCalibration, StartTeleop
 
@@ -94,6 +123,9 @@ def main():
         return 3
     except KeyboardInterrupt:
         print("调用已中断；已发送的请求不一定被服务端取消。", file=sys.stderr)
+        return 130
+    except EOFError:
+        print("标定已取消：终端输入结束，不会继续下一步或恢复转发。", file=sys.stderr)
         return 130
     except Exception as exc:
         print(f"服务调用失败：{exc}", file=sys.stderr)

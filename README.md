@@ -109,31 +109,43 @@ MANUS_RUNTIME_CALIBRATION_FILE=calibration/manus_runtime_calibration.yaml
 1. **MANUS 手套本体 / SDK 标定**：按 MANUS 官方流程完成穿戴与设备标定。需要显式加载原版单手 `.mcal` 时，在 `.env` 设置 `MANUS_CALIBRATION_FILE` 和对应 `MANUS_CALIBRATION_GLOVE_ID`；留空交由原版处理。不要把一个人的 `.mcal` 当成通用数据，也不要假设一个单手 `.mcal` 自动适用于两只手。
 2. **运行时姿态标定**：记录各侧 `open` / `fist`，结果保存在 `MANUS_RUNTIME_CALIBRATION_FILE` 指向的 YAML。左右手分别执行，供原版姿态映射使用。
 
-**下面所有 `calibration start/open/fist` 必须在真实灵巧手使能前执行。** 初次准备只启动管理服务，不启动真机后端/一键会话；真实手保持未使能。如果已在遥操作，先按第 5 节完整 `control stop`，确认关闭使能，再标定。标定服务会关闭选中侧命令转发，但**不等于真机回零或断使能**。
+**姿态标定必须在真实灵巧手关闭使能后执行。** 初次准备只启动管理服务，不启动真机后端/一键会话；真实手保持未使能。如果已在遥操作，先按第 5 节完整 `control stop`，确认关闭使能，再标定。标定服务会关闭选中侧命令转发，但**不等于真机回零或断使能**。
 
-终端 A：
+戴好手套、连接接收器并打开手套电源。终端 A 在项目根目录启动管理服务，并保持运行：
 
 ```bash
 pixi run -e native teleop
 ```
 
-终端 B，按动作逐条执行，上一步失败则停止并处理原因：
+终端 B 在同一项目目录只执行一次交互标定命令：
 
 ```bash
-pixi run -e native control calibration start --side left --timeout 60
-# 拇指自然张开，其他四指并拢，保持稳定后：
-pixi run -e native control calibration open --side left --timeout 60
-# 五指握拳，保持稳定后：
-pixi run -e native control calibration fist --side left --timeout 60
+pixi run -e native control calibration run --side left --timeout 60
 ```
 
-右手将三条命令中的 `--side left` 换成 `--side right`。可选清除命令：
+程序自动进入标定，随后按提示完成两个动作：
+
+1. **伸手：** 食指、中指、无名指和小指自然伸直并拢，拇指自然张开；不要将四指张成扇形。摆好后按 **Enter**，保持姿态直到采集返回。
+2. **握拳：** 五指自然握拳，不必用力攥紧。摆好后按 **Enter**，保持姿态直到采集返回。
+3. 两次采集成功后，程序提示标定完成并退出。任一步失败立即停止，先根据 `message` 处理原因，不会跳到下一步。
+
+准备姿态、等待按键的时间不计入 `--timeout`；该参数限制每一步服务发现与响应的等待时间。按 **Ctrl+C** 可取消，不会继续下一步或自动恢复转发；已经发出的采集请求仍可能在服务端完成。此命令需要交互终端，不接受管道自动确认。
+
+右手将 `--side left` 换成 `--side right`，左右手分别完成标定。结果默认保存至 `calibration/manus_runtime_calibration.yaml`，无需手动编辑或加载；如果设置了 `MANUS_RUNTIME_CALIBRATION_FILE`，则使用该配置路径。
+
+需要脚本化调用时，仍可分别执行 `calibration start/open/fist --side left`。可选清除命令：
 
 ```bash
 pixi run -e native control calibration clear --side left --timeout 60
 ```
 
-完成或清除标定不会自动恢复转发。准备开始真机遥操作时，必须重新走一键入口或 `control start-left/start-right`，不能直接恢复旧的关节发布。若接下来使用一键入口，先用 Ctrl+C 关闭这次仅用于标定的 teleop 管理服务，避免重复管理器。
+完成或清除标定不会自动恢复转发。标定成功后，先回到终端 A，按 **Ctrl+C** 并等待此次标定管理服务退出，避免重复管理器。确认机械手已通电、网络正常、工作区无障碍且急停可触及，再在项目根目录运行：
+
+```bash
+./start.sh --side left
+```
+
+右手使用 `--side right`；双手均已分别标定时可使用 `--side both`。一键入口会启动后端和管理器、读取已保存的标定、连接目标手并回零，再开启跟随，无需另外启动后端。不要直接恢复旧的关节发布。正常停止时在一键启动终端按 **Ctrl+C**，等待回零、关闭使能和退出完成；危险情况下使用物理急停，不等待软件回零。
 
 ## 4. 一键真实遥操作
 
