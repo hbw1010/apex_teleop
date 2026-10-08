@@ -159,7 +159,7 @@ pixi run -e native control calibration clear --side left --timeout 60
 
 双手会话运行期间，也可在另一个终端单独执行 `control stop --ip <其中一只手的IP>`：会话等待该手回零/失能完成后移除它，另一只手继续运行；全部手停止后会话正常退出。再次启动已移除的手可使用手动 `control start-left/start-right` 或单独一键会话。
 
-## 5. 手动逐步启动与停止（同样自动回零）
+## 5. 手动逐步启动与停止
 
 希望手动管理终端时，不使用一键会话；所有终端都从同一项目目录运行、使用相同 `.env`。标定必须已按第 3 节完成。
 
@@ -227,7 +227,7 @@ pixi run -e native hand disconnect --ip 192.168.0.102 --timeout 10
 
 后端关键服务为 `/rysen/apexhand/connect`、`/rysen/apexhand/get_connection_info`、`/rysen/apexhand/set_all_fingers` 和 `/rysen/apexhand/move_joint`；MANUS 管理服务为 `/rysen/apexhand/start_manus_teleop`。可以只读检查这些服务是否存在，但直接调用它们不会自动获得 `control` 的整套安全顺序。
 
-## 6. 纯仿真模式（不连接真机）
+## 6. 仿真模式
 
 无需 MANUS 或图形界面的模型/IK 检查直接使用 `pixi run -e native smoke`。以下是**带原版管理器/手套链路**的纯仿真转发示例，仍可能需要正确侧 MANUS 数据或现有仿真订阅者；它不会凭空生成手套输入或仿真后端。
 
@@ -280,69 +280,3 @@ pixi run -e native ros2 topic echo /rysen/apexhand/ip_192_168_0_102/move_j_posit
 
 搬迁时携带完整 Git/LFS 内容，在新位置重新 `pixi install --locked -e native`、`build-backend`、`smoke`；不要搬运包含绝对路径的 `.pixi/`、`build/`、根目录 `install/`。个人标定应单独安全迁移，不放进 GitHub。
 
-## 8. 上传到 GitHub（用户在终端执行）
-
-最终仓库名使用 **`apex_teleop`**，默认创建 **private**。以下流程不假设本机已登录 `gh`、已配置 Git 身份或已有远程；不会自动替用户创建或推送。上传前确认第 1 节的资产再分发权限，并检查 `.env`、个人标定、凭据和设备信息未混入其他待上传文件。
-
-### 8.1 登录并初始化
-
-在项目根目录执行；`git init -b main` 用于尚未初始化的新工程。若已有 Git 历史/远程，先检查并保留，不要重新覆盖或强推。
-
-```bash
-pixi exec --spec gh gh auth login
-pixi exec --spec gh gh auth setup-git
-
-git init -b main
-git lfs install --local
-```
-
-设置**本仓库范围**的提交身份，不硬编码任何人的姓名/邮箱。可以先查询当前 GitHub 登录用户：
-
-```bash
-pixi exec --spec gh gh api user --jq '{login: .login, id: .id}'
-```
-
-在 GitHub 邮箱设置中确认自己的 noreply 地址，替换下列占位符再执行（常见形式为 `ID+USERNAME@users.noreply.github.com`，以账户设置实际显示为准）：
-
-```bash
-git config --local user.name "YOUR_GITHUB_USERNAME"
-git config --local user.email "YOUR_GITHUB_NOREPLY_EMAIL"
-```
-
-### 8.2 暂存完整资产并检查
-
-```bash
-# .gitattributes 已跟踪超大 MANUS 动态库，无需重复设置规则。
-git add .
-git status --short
-git lfs ls-files
-git diff --cached --stat
-
-# 应能看到四类 vendor 资产，以及模型、SDK、源码、锁文件：
-git ls-files vendor/install vendor/ros vendor/system vendor/apex-sdk
-
-# 下条应无输出；如有输出，先停止上传并排除对应私人/生成文件：
-git ls-files .env calibration .pixi build install log .cache
-```
-
-根目录 `/install/` 被忽略是正确的，**`vendor/install/` 必须保留**。`git lfs ls-files` 应列出 MANUS 动态库；上传下载需要 GitHub LFS 权限与足够配额。除超大文件通过 LFS 外，其余已授权 SDK、模型、网格和运行库照常提交。不要使用 `git add -f` 绕过个人标定和本机产物的忽略规则。
-
-### 8.3 提交并创建私有仓库
-
-确认暂存内容正确后：
-
-```bash
-git commit -m "feat: package native ApexHand teleoperation workflow"
-
-# 此命令才会实际创建并推送远程；在本人 GitHub 账户下创建 private 仓库。
-pixi exec --spec gh gh repo create apex_teleop --private --source . --remote origin --push
-
-# 查看实际创建的远程、可见性与 LFS 状态；不要凭示例猜远程 URL。
-git remote -v
-pixi exec --spec gh gh repo view --json nameWithOwner,visibility,url
-git lfs status
-```
-
-若目标仓库或 `origin` 已存在，创建命令可能失败：先检查 `git remote -v` 和 GitHub 实际仓库，不要删除他人的历史、自动覆盖 remote 或 `--force` 推送。后续正常更新使用 `git add`、`git commit`、`git push`，LFS hook 随推送上传对象。
-
-最后在另一目录/机器用第 2 节的真实 `OWNER` 地址完整 clone、`git lfs pull`、锁定安装、独立构建和 `smoke` 验证可迁移性；这一过程不需要连接真实灵巧手，不能替代尚待完成的真机运动验收。
